@@ -14,7 +14,7 @@
  :initialize-db
  (fn []
    {:db db/default-db
-    :fx [[:dispatch-later [{:ms 300 :dispatch [:init-web3]}]]]}))
+    :fx [[:dispatch-later [{:ms 300 :dispatch [:check-metamask]}]]]}))
 
 (defn dispatch-time-in-seconds
   []
@@ -30,6 +30,18 @@
 
 ;; Ethereum / Web3
 ;;
+
+(reg-event-fx
+ :check-metamask
+ (fn [_]
+   {:fx [[:metamask/available? {:on-success [:init-web3]
+                                :on-failure [:metamask-not-available]}]]}))
+
+(reg-event-fx
+ :metamask-not-available
+ (fn [{:keys [db]}]
+   {:db (assoc-in db [:loading :web3] false)
+    :fx [[:dispatch [:set-active-page [:no-metamask]]]]}))
 
 (reg-event-fx
  :init-web3

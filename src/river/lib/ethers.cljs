@@ -21,6 +21,7 @@
   []
   (.request js/ethereum (js-obj "method" "eth_requestAccounts")))
 
+
 ;; Ethers
 ;;
 
@@ -63,6 +64,13 @@
 
 ;; Effects
 ;;
+
+(reg-fx
+ :metamask/available?
+ (fn [{:keys [on-success on-failure]}]
+   (if (exists? js/ethereum)
+      (dispatch on-success)
+      (dispatch on-failure))))
 
 (reg-fx
  :metamask/connect
