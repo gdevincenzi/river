@@ -1,0 +1,15 @@
+/*.log
+/target
+/*-init.clj
+/resources/public/js
+/resources/public/test
+.nrepl-port
+.lein-failures
+out
+.DS_Store
+/node_modules
+/target
+/public/js
+/.shadow-cljs
+yarn.lock
+/.idea

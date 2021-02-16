@@ -1,0 +1,42 @@
+.river-blue {
+    color: #3D586B;
+}
+
+.button.river-blue,
+.modal-card-head.river-blue,
+.panel-heading.river-blue {
+    background-color: #3D586B;
+    color: #FFF;
+}
+
+.button[disabled].river-blue {
+    background-color: #3D586B;
+    border-color: transparent;
+    opacity: 0.5;
+}
+
+.progress.is-tiny {
+    height: 0.2rem;
+}
+
+.spinner {
+  margin: auto;
+  border: 6px solid #f3f3f3; /* Light grey */
+  border-top: 6px solid #3D586B;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.notifications {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  z-index: 100;
+}
